@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "server": "json-server --watch db.json --port 5000",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "vite",
+  "server": "json-server --watch db.json --port 5000",
+  "server:render": "json-server --watch db.json --port $PORT --host 0.0.0.0",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview"
+},
   "dependencies": {
     "axios": "^1.20.0",
     "bootstrap": "^5.3.8",
