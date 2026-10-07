@@ -1,0 +1,313 @@
+
+/* =========================================================
+   BASE LOADER
+========================================================= */
+
+.project-loader {
+  width: 100%;
+
+  color: var(--text-primary);
+
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   LOADER INLINE
+========================================================= */
+
+.project-loader-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  padding: 32px 24px;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   LOADER FULL PAGE
+========================================================= */
+
+.project-loader-full-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: calc(
+    100vh - var(--navbar-height, 68px)
+  );
+
+  padding: 40px 24px;
+
+  background: var(--page-bg);
+
+  transition:
+    background-color var(--transition-normal);
+}
+
+
+/* =========================================================
+   LOADER CONTENT
+========================================================= */
+
+.project-loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOADER ICON
+========================================================= */
+
+.project-loader-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary);
+
+  line-height: 1;
+
+  animation: projectLoaderSpin 0.9s linear infinite;
+
+  transition:
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   LOADER TEXT
+========================================================= */
+
+.project-loader-text {
+  margin: 14px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  text-align: center;
+
+  transition:
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   SMALL LOADER
+========================================================= */
+
+.project-loader-small
+  .project-loader-icon {
+  font-size: 20px;
+}
+
+.project-loader-small
+  .project-loader-text {
+  margin-top: 10px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   MEDIUM LOADER
+========================================================= */
+
+.project-loader-medium
+  .project-loader-icon {
+  font-size: 28px;
+}
+
+.project-loader-medium
+  .project-loader-text {
+  margin-top: 14px;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LARGE LOADER
+========================================================= */
+
+.project-loader-large
+  .project-loader-icon {
+  font-size: 38px;
+}
+
+.project-loader-large
+  .project-loader-text {
+  margin-top: 16px;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   LOADER ANIMATION
+========================================================= */
+
+@keyframes projectLoaderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .project-loader-inline {
+    min-height: 160px;
+
+    padding: 28px 20px;
+  }
+
+  .project-loader-full-page {
+    min-height: calc(
+      100vh - var(--navbar-height, 62px)
+    );
+
+    padding: 36px 20px;
+  }
+}
+
+
+/* =========================================================
+   780px
+========================================================= */
+
+@media (max-width: 780px) {
+  .project-loader-inline {
+    min-height: 150px;
+
+    padding: 26px 18px;
+  }
+
+  .project-loader-full-page {
+    min-height: calc(
+      100vh - var(--navbar-height, 62px)
+    );
+
+    padding: 32px 18px;
+  }
+
+  .project-loader-medium
+    .project-loader-icon {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .project-loader-inline {
+    min-height: 130px;
+
+    padding: 24px 16px;
+  }
+
+  .project-loader-full-page {
+    min-height: calc(
+      100vh - var(--navbar-height, 58px)
+    );
+
+    padding: 28px 16px;
+  }
+
+  .project-loader-small
+    .project-loader-icon {
+    font-size: 18px;
+  }
+
+  .project-loader-medium
+    .project-loader-icon {
+    font-size: 24px;
+  }
+
+  .project-loader-large
+    .project-loader-icon {
+    font-size: 34px;
+  }
+
+  .project-loader-text {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .project-loader-inline {
+    min-height: 120px;
+
+    padding: 22px 14px;
+  }
+
+  .project-loader-full-page {
+    min-height: calc(
+      100vh - var(--navbar-height, 58px)
+    );
+
+    padding: 24px 14px;
+  }
+
+  .project-loader-medium
+    .project-loader-icon {
+    font-size: 22px;
+  }
+
+  .project-loader-large
+    .project-loader-icon {
+    font-size: 30px;
+  }
+
+  .project-loader-text {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-loader-icon {
+    animation: none;
+  }
+
+  .project-loader,
+  .project-loader-full-page,
+  .project-loader-icon,
+  .project-loader-text {
+    transition: none;
+  }
+}

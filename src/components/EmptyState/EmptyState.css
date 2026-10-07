@@ -1,0 +1,287 @@
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 280px;
+
+  padding: 40px 24px;
+
+  text-align: center;
+
+  background: var(--bg-card);
+
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+
+  color: var(--text-primary);
+
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.empty-state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  background: var(--primary-light);
+  color: var(--primary);
+
+  font-size: 28px;
+
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.empty-state-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 480px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.empty-state-title {
+  margin: 0 0 8px;
+
+  color: var(--text-primary);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.empty-state-message {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.empty-state-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  margin-top: 20px;
+  padding: 9px 16px;
+
+  border: 1px solid var(--primary);
+
+  border-radius: var(--radius-md);
+
+  background: var(--primary);
+  color: var(--text-on-primary);
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+.empty-state-action:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.empty-state-action:active {
+  transform: translateY(0);
+}
+
+
+.empty-state-action:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .empty-state {
+    min-height: 260px;
+
+    padding: 36px 22px;
+  }
+
+  .empty-state-icon {
+    width: 60px;
+    height: 60px;
+
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   780px
+========================================================= */
+
+@media (max-width: 780px) {
+  .empty-state {
+    min-height: 240px;
+
+    padding: 32px 20px;
+  }
+
+  .empty-state-title {
+    font-size: 17px;
+  }
+
+  .empty-state-message {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .empty-state {
+    min-height: 220px;
+
+    padding: 28px 16px;
+
+    border-radius: var(--radius-md);
+  }
+
+  .empty-state-icon {
+    width: 54px;
+    height: 54px;
+
+    margin-bottom: 15px;
+
+    font-size: 23px;
+  }
+
+  .empty-state-title {
+    margin-bottom: 7px;
+
+    font-size: 16px;
+  }
+
+  .empty-state-message {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .empty-state-action {
+    min-height: 38px;
+
+    margin-top: 17px;
+    padding: 8px 14px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .empty-state {
+    min-height: 200px;
+
+    padding: 24px 14px;
+  }
+
+  .empty-state-icon {
+    width: 50px;
+    height: 50px;
+
+    margin-bottom: 13px;
+
+    font-size: 21px;
+  }
+
+  .empty-state-title {
+    font-size: 15px;
+  }
+
+  .empty-state-message {
+    font-size: 11.5px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-state,
+  .empty-state-icon,
+  .empty-state-action {
+    transition: none;
+  }
+}

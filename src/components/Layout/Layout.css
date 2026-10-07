@@ -1,0 +1,284 @@
+/* =========================================================
+   PROJECTTRACK
+
+   LAYOUT
+========================================================= */
+
+.app-layout {
+  --layout-sidebar-width: var(
+    --sidebar-width,
+    250px
+  );
+
+  --layout-navbar-height: var(
+    --navbar-height,
+    68px
+  );
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: var(--page-bg);
+  color: var(--text-primary);
+
+  overflow-x: hidden;
+
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.app-main-area {
+  min-width: 0;
+  min-height: 100vh;
+
+  margin-left: var(
+    --layout-sidebar-width
+  );
+
+  background: var(--page-bg);
+
+  transition:
+    margin-left var(--transition-normal),
+    background-color var(--transition-normal);
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.app-main {
+  width: 100%;
+  min-height: 100vh;
+
+  padding-top: calc(
+    var(--layout-navbar-height) + 52px
+  );
+
+  padding-right: 48px;
+  padding-bottom: 56px;
+  padding-left: 48px;
+
+  background: var(--page-bg);
+  color: var(--text-primary);
+
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   INNER CONTENT WIDTH
+========================================================= */
+
+.app-main > * {
+  width: 100%;
+  max-width: 1500px;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+========================================================= */
+
+.app-sidebar-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: calc(
+    var(--z-sidebar, 100) - 1
+  );
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: var(--overlay);
+
+  backdrop-filter: blur(2px);
+
+  cursor: pointer;
+
+  animation: layoutOverlayIn 0.2s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   BODY SCROLL LOCK
+========================================================= */
+
+body.sidebar-is-open {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 781px) {
+  .app-sidebar-overlay {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+  .app-layout {
+    --layout-sidebar-width: var(
+      --sidebar-width,
+      240px
+    );
+  }
+
+  .app-main {
+    padding-top: calc(
+      var(--layout-navbar-height) + 52px
+    );
+
+    padding-right: 40px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+  }
+}
+
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .app-layout {
+    --layout-sidebar-width: var(
+      --sidebar-width,
+      230px
+    );
+  }
+
+  .app-main {
+    padding-top: calc(
+      var(--layout-navbar-height) + 44px
+    );
+
+    padding-right: 32px;
+    padding-bottom: 44px;
+    padding-left: 32px;
+  }
+}
+
+
+/* =========================================================
+   780px
+========================================================= */
+
+@media (max-width: 780px) {
+  .app-layout {
+    --layout-sidebar-width: 0px;
+  }
+
+  .app-main-area {
+    margin-left: 0;
+  }
+
+  .app-main {
+    padding-top: calc(
+      var(--layout-navbar-height, 62px) + 34px
+    );
+
+    padding-right: 24px;
+    padding-bottom: 38px;
+    padding-left: 24px;
+  }
+
+  .app-sidebar-overlay {
+    z-index: calc(
+      var(--z-sidebar, 100) - 1
+    );
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .app-main {
+    padding-top: calc(
+      var(--layout-navbar-height, 58px) + 28px
+    );
+
+    padding-right: 18px;
+    padding-bottom: 32px;
+    padding-left: 18px;
+  }
+}
+
+
+/* =========================================================
+   380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .app-main {
+    padding-top: calc(
+      var(--layout-navbar-height, 58px) + 24px
+    );
+
+    padding-right: 15px;
+    padding-bottom: 28px;
+    padding-left: 15px;
+  }
+}
+
+
+/* =========================================================
+   OVERLAY ANIMATION
+========================================================= */
+
+@keyframes layoutOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-layout,
+  .app-main-area,
+  .app-main,
+  .app-sidebar-overlay {
+    transition: none;
+    animation: none;
+  }
+}

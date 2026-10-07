@@ -1,0 +1,1700 @@
+/* =========================================================
+   TEAM FORM OVERLAY
+========================================================= */
+
+.team-form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: var(--overlay);
+
+  backdrop-filter: blur(4px);
+
+  animation: teamFormOverlayIn 0.2s ease;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.team-form-modal {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-xl);
+
+  animation: teamFormModalIn 0.25s ease;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.team-form-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 22px 24px;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+.team-form-header > div:first-child {
+  min-width: 0;
+}
+
+.team-form-header h2 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 21px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.team-form-header p {
+  margin: 6px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* CLOSE BUTTON */
+
+.team-form-close {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  color: var(--text-secondary);
+  background: var(--bg-soft);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.team-form-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.team-form-close:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border-color: var(--primary);
+
+  transform: rotate(90deg);
+}
+
+.team-form-close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.team-form {
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+}
+
+.team-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.team-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.team-form::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.team-form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  padding: 22px 24px 0;
+}
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.team-form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.team-form-group label {
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.team-input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.team-input-wrapper > svg {
+  position: absolute;
+  left: 13px;
+
+  width: 17px;
+  height: 17px;
+
+  color: var(--text-muted);
+
+  pointer-events: none;
+
+  transition: color 0.2s ease;
+}
+
+.team-input-wrapper:focus-within > svg {
+  color: var(--primary);
+}
+
+/* INPUT + SELECT */
+
+.team-input-wrapper input,
+.team-input-wrapper select {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 13px 0 40px;
+
+  color: var(--text-primary);
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.team-input-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.team-input-wrapper input:hover,
+.team-input-wrapper select:hover {
+  border-color: var(--primary);
+}
+
+.team-input-wrapper input:focus,
+.team-input-wrapper select:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px var(--primary-light);
+}
+
+.team-input-wrapper input:disabled,
+.team-input-wrapper select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.team-input-wrapper select {
+  cursor: pointer;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.team-input-wrapper.team-input-error input,
+.team-input-wrapper.team-input-error select {
+  border-color: var(--danger);
+}
+
+.team-input-wrapper.team-input-error input:focus,
+.team-input-wrapper.team-input-error select:focus {
+  box-shadow:
+    0 0 0 3px var(--danger-light);
+}
+
+.team-form-error {
+  display: block;
+
+  color: var(--danger);
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.team-form-help {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   TEAM MEMBERS SECTION
+========================================================= */
+
+.team-members-section {
+  margin: 22px 24px 0;
+
+  padding: 18px;
+
+  background: var(--bg-soft);
+
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+}
+
+.team-section-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 14px;
+}
+
+.team-section-title > div {
+  min-width: 0;
+}
+
+.team-section-title h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.team-section-title p {
+  margin: 4px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.team-section-title > span {
+  flex-shrink: 0;
+
+  padding: 5px 9px;
+
+  color: var(--primary);
+  background: var(--primary-light);
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   ADD STUDENT ROW
+========================================================= */
+
+.team-member-add {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) auto;
+
+  gap: 10px;
+
+  position: relative;
+}
+
+/* =========================================================
+   CUSTOM STUDENT DROPDOWN
+========================================================= */
+
+.team-student-dropdown {
+  position: relative;
+
+  min-width: 0;
+}
+
+/* TRIGGER */
+
+.team-student-dropdown-trigger {
+  width: 100%;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 0 12px;
+
+  color: var(--text-primary);
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 13px;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.team-student-dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.team-student-dropdown-trigger.active {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px var(--primary-light);
+}
+
+.team-student-dropdown-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.team-student-dropdown-trigger > span {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.student-placeholder {
+  color: var(--text-muted);
+}
+
+.student-selected-value {
+  color: var(--text-primary);
+}
+
+.team-student-dropdown-trigger > svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  color: var(--text-secondary);
+
+  transition: transform 0.2s ease;
+}
+
+.team-student-dropdown-trigger > svg.rotate {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   CUSTOM DROPDOWN MENU
+========================================================= */
+
+.team-student-dropdown-menu {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+
+  z-index: 50;
+
+  max-height: 230px;
+
+  overflow-y: auto;
+
+  padding: 5px;
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  box-shadow: var(--shadow-lg);
+
+  animation: teamDropdownOpen 0.16s ease;
+}
+
+.team-student-dropdown-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.team-student-dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.team-student-dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+
+  border-radius: 10px;
+}
+
+/* =========================================================
+   DROPDOWN OPTION
+========================================================= */
+
+.team-student-dropdown-option {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 9px 10px;
+
+  color: var(--text-primary);
+  background: transparent;
+
+  border: 0;
+  border-radius: 6px;
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.team-student-dropdown-option:hover {
+  background: var(--bg-hover);
+}
+
+.team-student-dropdown-option.selected {
+  background: var(--primary-light);
+}
+
+/* =========================================================
+   DROPDOWN AVATAR
+========================================================= */
+
+.team-dropdown-avatar {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary);
+  background: var(--primary-light);
+
+  border-radius: 50%;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DROPDOWN STUDENT INFO
+========================================================= */
+
+.team-dropdown-student-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.team-dropdown-student-info strong {
+  overflow: hidden;
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-dropdown-student-info small {
+  color: var(--text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   EMPTY STUDENT DROPDOWN
+========================================================= */
+
+.team-student-empty {
+  padding: 16px 10px;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.team-add-member-btn {
+  min-width: 88px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 14px;
+
+  color: var(--text-on-primary);
+  background: var(--primary);
+
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.team-add-member-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.team-add-member-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+
+  transform: translateY(-1px);
+}
+
+.team-add-member-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   SELECTED MEMBERS LIST
+========================================================= */
+
+.selected-members-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.selected-member {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 10px 11px;
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.selected-member:hover {
+  background: var(--bg-hover);
+
+  border-color: var(--primary);
+}
+
+/* MEMBER INFO */
+
+.selected-member-info {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.selected-member-avatar {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary);
+  background: var(--primary-light);
+
+  border-radius: 50%;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.selected-member-info > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.selected-member-info strong {
+  overflow: hidden;
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-member-info span {
+  color: var(--text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.3;
+}
+
+/* REMOVE BUTTON */
+
+.selected-member > button {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  color: var(--text-secondary);
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.selected-member > button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.selected-member > button:hover:not(:disabled) {
+  color: var(--danger);
+
+  background: var(--danger-light);
+
+  border-color: var(--danger-light);
+}
+
+.selected-member > button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   NO MEMBERS
+========================================================= */
+
+.no-members-message {
+  min-height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+  padding: 14px;
+
+  color: var(--text-muted);
+  background: var(--bg-card);
+
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+
+  font-size: 12px;
+}
+
+.no-members-message svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* =========================================================
+   TEAM LEADER
+========================================================= */
+
+.team-leader-group {
+  margin: 20px 24px 0;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.team-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  padding: 18px 24px;
+
+  border-top: 1px solid var(--border-light);
+
+  background: var(--bg-card);
+}
+
+/* COMMON BUTTON */
+
+.team-cancel-btn,
+.team-submit-btn {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 17px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* CANCEL */
+
+.team-cancel-btn {
+  color: var(--text-primary);
+  background: var(--bg-soft);
+
+  border: 1px solid var(--border-color);
+}
+
+.team-cancel-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+
+  border-color: var(--border-color);
+}
+
+/* SUBMIT */
+
+.team-submit-btn {
+  color: var(--text-on-primary);
+  background: var(--primary);
+
+  border: 1px solid var(--primary);
+}
+
+.team-submit-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.team-submit-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+
+  border-color: var(--primary-hover);
+
+  transform: translateY(-1px);
+}
+
+/* DISABLED */
+
+.team-cancel-btn:disabled,
+.team-submit-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   CREATE / UPDATE CONFIRMATION
+========================================================= */
+
+.team-confirm-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: var(--overlay);
+
+  backdrop-filter: blur(4px);
+
+  animation: teamFormOverlayIn 0.2s ease;
+}
+
+.team-confirm-modal {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 26px;
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-xl);
+
+  text-align: center;
+
+  animation: teamConfirmModalIn 0.22s ease;
+}
+
+/* CONFIRM ICON */
+
+.team-confirm-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 16px;
+
+  color: var(--warning);
+
+  background: var(--warning-light);
+
+  border-radius: 50%;
+}
+
+.team-confirm-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+/* CONFIRM CONTENT */
+
+.team-confirm-content h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.team-confirm-content p {
+  margin: 8px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* CONFIRM ACTIONS */
+
+.team-confirm-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.team-confirm-cancel,
+.team-confirm-submit {
+  min-width: 120px;
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 16px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* CONFIRM CANCEL */
+
+.team-confirm-cancel {
+  color: var(--text-primary);
+
+  background: var(--bg-soft);
+
+  border: 1px solid var(--border-color);
+}
+
+.team-confirm-cancel:hover:not(:disabled) {
+  background: var(--bg-hover);
+
+  border-color: var(--border-color);
+}
+
+/* CONFIRM SUBMIT */
+
+.team-confirm-submit {
+  color: var(--text-on-primary);
+
+  background: var(--primary);
+
+  border: 1px solid var(--primary);
+}
+
+.team-confirm-submit:hover:not(:disabled) {
+  background: var(--primary-hover);
+
+  border-color: var(--primary-hover);
+
+  transform: translateY(-1px);
+}
+
+.team-confirm-cancel:disabled,
+.team-confirm-submit:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes teamFormOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes teamFormModalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes teamConfirmModalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes teamDropdownOpen {
+  from {
+    opacity: 0;
+
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+[data-theme="dark"] .team-student-dropdown-menu {
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .selected-member {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .no-members-message {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .team-confirm-modal {
+  background: var(--bg-card);
+}
+
+/* =========================================================
+   1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+  .team-form-modal {
+    max-width: 700px;
+  }
+}
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .team-form-overlay {
+    padding: 20px;
+  }
+
+  .team-form-modal {
+    max-width: 680px;
+  }
+
+  .team-form-grid {
+    gap: 16px;
+  }
+}
+
+/* =========================================================
+   780px
+========================================================= */
+
+@media (max-width: 780px) {
+  .team-form-overlay {
+    align-items: flex-start;
+
+    padding: 20px 16px;
+  }
+
+  .team-form-modal {
+    max-height: calc(100vh - 40px);
+
+    border-radius: 12px;
+  }
+
+  .team-form-header {
+    padding: 19px 20px;
+  }
+
+  .team-form-grid {
+    grid-template-columns: 1fr;
+
+    padding: 20px 20px 0;
+  }
+
+  .team-members-section {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .team-leader-group {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .team-form-footer {
+    padding: 16px 20px;
+  }
+
+  .team-student-dropdown-menu {
+    max-height: 210px;
+  }
+}
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .team-form-overlay {
+    padding: 12px;
+  }
+
+  .team-form-modal {
+    max-height: calc(100vh - 24px);
+
+    border-radius: 10px;
+  }
+
+  .team-form-header {
+    padding: 16px;
+  }
+
+  .team-form-header h2 {
+    font-size: 18px;
+  }
+
+  .team-form-header p {
+    font-size: 12px;
+  }
+
+  .team-form-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .team-form-grid {
+    padding: 17px 16px 0;
+  }
+
+  .team-members-section {
+    margin: 18px 16px 0;
+
+    padding: 14px;
+  }
+
+  .team-section-title {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .team-section-title > span {
+    align-self: flex-start;
+  }
+
+  .team-member-add {
+    grid-template-columns: 1fr;
+  }
+
+  .team-add-member-btn {
+    width: 100%;
+  }
+
+  .team-student-dropdown-menu {
+    max-height: 200px;
+  }
+
+  .team-leader-group {
+    margin: 18px 16px 0;
+  }
+
+  .team-form-footer {
+    padding: 14px 16px;
+  }
+
+  .team-cancel-btn,
+  .team-submit-btn {
+    flex: 1;
+  }
+
+  .team-confirm-modal {
+    max-width: 100%;
+
+    padding: 22px 18px;
+  }
+
+  .team-confirm-actions {
+    flex-direction: column;
+  }
+
+  .team-confirm-cancel,
+  .team-confirm-submit {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .team-form-overlay {
+    padding: 8px;
+  }
+
+  .team-form-modal {
+    max-height: calc(100vh - 16px);
+  }
+
+  .team-form-header {
+    padding: 14px;
+  }
+
+  .team-form-header h2 {
+    font-size: 17px;
+  }
+
+  .team-form-grid {
+    padding: 15px 14px 0;
+  }
+
+  .team-members-section {
+    margin: 16px 14px 0;
+
+    padding: 12px;
+  }
+
+  .team-leader-group {
+    margin: 16px 14px 0;
+  }
+
+  .team-form-footer {
+    gap: 8px;
+
+    padding: 12px 14px;
+  }
+
+  .team-cancel-btn,
+  .team-submit-btn {
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .selected-member {
+    padding: 9px;
+  }
+
+  .selected-member-info {
+    gap: 8px;
+  }
+
+  .selected-member-avatar {
+    width: 31px;
+    height: 31px;
+  }
+
+  .team-dropdown-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .team-confirm-modal {
+    padding: 20px 15px;
+  }
+
+  .team-confirm-content h3 {
+    font-size: 17px;
+  }
+
+  .team-confirm-content p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .team-form-overlay,
+  .team-form-modal,
+  .team-student-dropdown-menu,
+  .team-confirm-overlay,
+  .team-confirm-modal {
+    animation: none;
+  }
+
+  .team-form-close,
+  .team-input-wrapper input,
+  .team-input-wrapper select,
+  .team-student-dropdown-trigger,
+  .team-add-member-btn,
+  .selected-member,
+  .selected-member > button,
+  .team-cancel-btn,
+  .team-submit-btn,
+  .team-confirm-cancel,
+  .team-confirm-submit {
+    transition: none;
+  }
+}
+/* =========================================================
+   CUSTOM MENTOR DROPDOWN
+   ========================================================= */
+
+.team-mentor-dropdown {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.team-mentor-dropdown-trigger {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 13px 0 40px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.team-mentor-dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.team-mentor-dropdown-trigger.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.team-mentor-dropdown-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.team-mentor-dropdown-trigger > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-mentor-dropdown-trigger > svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.team-mentor-dropdown-trigger > svg.rotate {
+  transform: rotate(180deg);
+}
+
+.mentor-placeholder {
+  color: var(--text-muted);
+}
+
+.mentor-selected-value {
+  color: var(--text-primary);
+}
+
+.team-mentor-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 230px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  animation: teamDropdownOpen 0.16s ease;
+}
+
+.team-mentor-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.team-mentor-dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.team-mentor-dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.team-mentor-dropdown-option {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  color: var(--text-primary);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.team-mentor-dropdown-option:hover,
+.team-mentor-dropdown-option.selected {
+  background: var(--bg-hover);
+}
+
+.team-mentor-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.team-mentor-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.team-mentor-info strong {
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-mentor-info small {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-mentor-empty {
+  padding: 16px 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Keep dropdowns above the form content */
+.team-form-group,
+.team-member-add,
+.team-mentor-dropdown,
+.team-student-dropdown {
+  position: relative;
+}
+
+.team-form-grid,
+.team-members-section,
+.team-leader-group {
+  overflow: visible;
+}
+
+/* =========================================================
+   DROPDOWN RESPONSIVE SCROLL
+   ========================================================= */
+
+@media (max-width: 780px) {
+  .team-mentor-dropdown-menu {
+    max-height: 210px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-mentor-dropdown-menu {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 380px) {
+  .team-mentor-dropdown-menu {
+    max-height: 180px;
+  }
+}

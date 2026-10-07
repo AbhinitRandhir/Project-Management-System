@@ -1,0 +1,1168 @@
+
+/* =========================================================
+   PROJECTTRACK - REVIEW DETAILS
+   Complete CSS for ReviewDetails.jsx
+========================================================= */
+
+:root {
+  --rd-primary: #205a9e;
+  --rd-primary-dark: #174a82;
+  --rd-primary-light: #eaf2fb;
+
+  --rd-bg: #f5f8fc;
+  --rd-surface: #ffffff;
+  --rd-border: #e2e8f0;
+
+  --rd-text: #172b4d;
+  --rd-muted: #64748b;
+
+  --rd-success: #15803d;
+  --rd-success-bg: #f0fdf4;
+
+  --rd-danger: #dc2626;
+  --rd-warning: #d97706;
+
+  --rd-radius: 12px;
+  --rd-radius-sm: 8px;
+
+  --rd-shadow:
+    0 18px 60px rgba(15, 35, 65, 0.18);
+}
+
+/* =========================================================
+   OVERLAY AND MODAL
+========================================================= */
+
+.review-details-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  overflow-y: auto;
+  animation: rdFadeIn 0.2s ease;
+}
+
+.review-details-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 48px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--rd-surface);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+
+  box-shadow: var(--rd-shadow);
+  overflow: hidden;
+
+  animation: rdModalIn 0.25s ease;
+}
+
+@keyframes rdFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rdModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.review-details-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 20px 26px;
+
+  background: #ffffff;
+  border-bottom: 1px solid var(--rd-border);
+}
+
+.review-details-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.review-details-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--rd-primary);
+  background: var(--rd-primary-light);
+  border-radius: 13px;
+
+  font-size: 23px;
+}
+
+.review-details-title > div:last-child {
+  min-width: 0;
+}
+
+.review-details-title span {
+  display: inline-block;
+  margin-bottom: 3px;
+
+  color: var(--rd-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.review-details-title h2 {
+  margin: 0;
+
+  color: var(--rd-text);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.review-details-close {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  font-size: 19px;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.review-details-close:hover {
+  color: var(--rd-danger);
+  background: #fef2f2;
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   CONTENT AREA
+========================================================= */
+
+.review-details-content {
+  flex: 1;
+  min-height: 0;
+
+  padding: 24px 26px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  background: var(--rd-bg);
+}
+
+.review-details-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.review-details-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.review-details-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+.review-details-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.review-details-section {
+  margin-bottom: 20px;
+  padding: 21px;
+
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-border);
+  border-radius: var(--rd-radius);
+
+  box-shadow: 0 2px 8px rgba(15, 35, 65, 0.025);
+}
+
+.review-details-section:last-child {
+  margin-bottom: 0;
+}
+
+.review-details-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 18px;
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #edf1f6;
+}
+
+.review-details-section-title > svg {
+  flex-shrink: 0;
+
+  color: var(--rd-primary);
+  font-size: 19px;
+}
+
+.review-details-section-title h3 {
+  margin: 0;
+
+  color: var(--rd-text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   PROJECT INFORMATION
+========================================================= */
+
+.review-details-project {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 17px;
+
+  background: linear-gradient(
+    135deg,
+    #f0f6fd 0%,
+    #f8fbff 100%
+  );
+
+  border: 1px solid #dce9f7;
+  border-radius: 11px;
+}
+
+.review-details-project-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--rd-primary);
+  background: #ffffff;
+  border: 1px solid #dce9f7;
+  border-radius: 11px;
+
+  font-size: 22px;
+}
+
+.review-details-project > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.review-details-project span {
+  color: var(--rd-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.review-details-project h4 {
+  margin: 0;
+
+  color: var(--rd-text);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.review-details-project small {
+  color: var(--rd-muted);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.review-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.review-details-item {
+  min-width: 0;
+  min-height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 13px 15px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 9px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.review-details-item:hover {
+  background: #f3f7fc;
+  border-color: #cbdcf0;
+}
+
+.review-details-item > span {
+  color: var(--rd-muted);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.review-details-item > strong {
+  color: var(--rd-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.review-details-value-icon {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.review-details-value-icon svg {
+  flex-shrink: 0;
+  color: var(--rd-primary);
+  font-size: 14px;
+}
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.review-details-rating {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.review-details-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.review-details-stars svg {
+  font-size: 15px;
+}
+
+.review-details-star-filled {
+  color: #f59e0b;
+  fill: #f59e0b;
+}
+
+.review-details-star-empty {
+  color: #cbd5e1;
+}
+
+.review-details-rating > strong {
+  color: var(--rd-text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   PROJECT PROGRESS
+========================================================= */
+
+.review-details-progress {
+  padding: 16px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 10px;
+}
+
+.review-details-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.review-details-progress-header span {
+  color: var(--rd-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.review-details-progress-header strong {
+  color: var(--rd-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.review-details-progress-track {
+  width: 100%;
+  height: 9px;
+
+  overflow: hidden;
+
+  background: #e2e8f0;
+  border-radius: 20px;
+}
+
+.review-details-progress-fill {
+  height: 100%;
+  min-width: 0;
+
+  border-radius: inherit;
+
+  transition: width 0.35s ease;
+}
+
+.review-details-progress-fill.progress-low {
+  background: #f59e0b;
+}
+
+.review-details-progress-fill.progress-medium {
+  background: #3b82f6;
+}
+
+.review-details-progress-fill.progress-good {
+  background: #16a34a;
+}
+
+.review-details-progress-fill.progress-complete {
+  background: #15803d;
+}
+
+/* =========================================================
+   TEAM SCORE CARD
+========================================================= */
+
+.review-details-score-card {
+  padding: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #f0f6fd 0%,
+    #f8fbff 100%
+  );
+
+  border: 1px solid #dce9f7;
+  border-radius: 11px;
+}
+
+.review-details-score-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 13px;
+}
+
+.review-details-score-heading span {
+  color: var(--rd-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.review-details-score-heading strong {
+  color: var(--rd-primary);
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MARKS BAR
+========================================================= */
+
+.review-details-marks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-details-marks-track {
+  flex: 1;
+  min-width: 0;
+  height: 8px;
+
+  overflow: hidden;
+
+  background: #dbe5f0;
+  border-radius: 20px;
+}
+
+.review-details-marks-track span {
+  display: block;
+  height: 100%;
+
+  background: var(--rd-primary);
+  border-radius: inherit;
+
+  transition: width 0.35s ease;
+}
+
+.review-details-marks > strong {
+  min-width: 48px;
+
+  color: var(--rd-text);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CUMULATIVE TEAM TOTAL
+========================================================= */
+
+.review-details-cumulative {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 20px;
+  padding: 14px 15px;
+
+  background: #ffffff;
+  border: 1px solid #dce9f7;
+  border-radius: 9px;
+}
+
+.review-details-cumulative span {
+  color: var(--rd-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.review-details-cumulative strong {
+  color: var(--rd-success);
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   STUDENT EVALUATION LIST
+========================================================= */
+
+.review-details-student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-details-student-card {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 1fr)
+    minmax(125px, 0.65fr);
+
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 10px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.review-details-student-card:hover {
+  background: #f5f9fe;
+  border-color: #cbdcf0;
+  transform: translateY(-1px);
+}
+
+/* Student identity */
+
+.review-details-student-info {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.review-details-student-avatar {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--rd-primary);
+  background: var(--rd-primary-light);
+  border: 1px solid #d5e5f7;
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.review-details-student-info > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-details-student-info strong {
+  color: var(--rd-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.review-details-student-info small {
+  color: var(--rd-muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Current review score */
+
+.review-details-student-score {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-details-student-score > span,
+.review-details-student-total > span {
+  color: var(--rd-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Cumulative student score */
+
+.review-details-student-total {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.review-details-student-total strong {
+  color: var(--rd-success);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   FEEDBACK AND COMMENTS
+========================================================= */
+
+.review-details-comments {
+  padding: 16px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-left: 3px solid var(--rd-primary);
+  border-radius: 8px;
+}
+
+.review-details-comments > span {
+  display: block;
+  margin-bottom: 9px;
+
+  color: var(--rd-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.review-details-comments p {
+  margin: 0;
+
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.75;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.review-details-no-comments {
+  color: #94a3b8 !important;
+  font-style: italic;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.review-details-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding: 16px 26px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid var(--rd-border);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.review-details-footer button {
+  min-height: 41px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.review-details-footer button svg {
+  font-size: 15px;
+}
+
+.review-details-close-btn {
+  color: #475569;
+  background: #ffffff;
+  border-color: #cbd5e1 !important;
+}
+
+.review-details-close-btn:hover {
+  color: var(--rd-danger);
+  background: #fef2f2;
+  border-color: #fecaca !important;
+}
+
+.review-details-edit-btn {
+  color: #ffffff;
+  background: var(--rd-primary);
+  border-color: var(--rd-primary) !important;
+
+  box-shadow: 0 3px 8px rgba(32, 90, 158, 0.15);
+}
+
+.review-details-edit-btn:hover {
+  background: var(--rd-primary-dark);
+  border-color: var(--rd-primary-dark) !important;
+  box-shadow: 0 5px 12px rgba(32, 90, 158, 0.2);
+  transform: translateY(-1px);
+}
+
+.review-details-footer button:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.review-details-modal button:focus-visible {
+  outline: 3px solid rgba(32, 90, 158, 0.35);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .review-details-overlay {
+    padding: 16px;
+  }
+
+  .review-details-modal {
+    max-width: 760px;
+    max-height: calc(100vh - 32px);
+  }
+
+  .review-details-content {
+    padding: 20px;
+  }
+
+  .review-details-section {
+    padding: 18px;
+  }
+
+  .review-details-student-card {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 15px;
+  }
+
+  .review-details-student-total {
+    grid-column: 2;
+    align-items: flex-start;
+
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 680px
+========================================================= */
+
+@media (max-width: 680px) {
+  .review-details-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .review-details-modal {
+    max-height: calc(100vh - 20px);
+    border-radius: 14px;
+  }
+
+  .review-details-header {
+    padding: 16px 17px;
+  }
+
+  .review-details-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .review-details-title h2 {
+    font-size: 18px;
+  }
+
+  .review-details-content {
+    padding: 16px;
+  }
+
+  .review-details-section {
+    margin-bottom: 15px;
+    padding: 16px;
+  }
+
+  .review-details-section-title {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+  }
+
+  .review-details-section-title h3 {
+    font-size: 14px;
+  }
+
+  .review-details-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .review-details-item {
+    min-height: 62px;
+    padding: 12px;
+  }
+
+  .review-details-project {
+    padding: 14px;
+  }
+
+  .review-details-project h4 {
+    font-size: 15px;
+  }
+
+  .review-details-student-card {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding: 14px;
+  }
+
+  .review-details-student-total {
+    grid-column: auto;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .review-details-student-score {
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .review-details-footer {
+    padding: 13px 16px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .review-details-overlay {
+    padding: 0;
+  }
+
+  .review-details-modal {
+    width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
+
+    border: none;
+    border-radius: 0;
+  }
+
+  .review-details-header {
+    padding: 14px;
+  }
+
+  .review-details-title {
+    gap: 10px;
+  }
+
+  .review-details-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+
+  .review-details-title h2 {
+    font-size: 17px;
+  }
+
+  .review-details-title span {
+    font-size: 11px;
+  }
+
+  .review-details-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .review-details-content {
+    padding: 12px;
+  }
+
+  .review-details-section {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .review-details-project {
+    gap: 11px;
+    padding: 12px;
+  }
+
+  .review-details-project-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 19px;
+  }
+
+  .review-details-project h4 {
+    font-size: 14px;
+  }
+
+  .review-details-score-card {
+    padding: 14px;
+  }
+
+  .review-details-score-heading strong {
+    font-size: 17px;
+  }
+
+  .review-details-cumulative {
+    padding: 12px;
+  }
+
+  .review-details-cumulative span {
+    font-size: 11px;
+  }
+
+  .review-details-cumulative strong {
+    font-size: 16px;
+  }
+
+  .review-details-comments {
+    padding: 13px;
+  }
+
+  .review-details-comments p {
+    font-size: 12px;
+  }
+
+  .review-details-footer {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .review-details-footer button {
+    flex: 1;
+    min-height: 40px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+  .review-details-header {
+    padding: 12px;
+  }
+
+  .review-details-content {
+    padding: 10px;
+  }
+
+  .review-details-section {
+    padding: 12px;
+  }
+
+  .review-details-title h2 {
+    font-size: 16px;
+  }
+
+  .review-details-project {
+    align-items: flex-start;
+  }
+
+  .review-details-score-heading {
+    align-items: flex-start;
+  }
+
+  .review-details-cumulative {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .review-details-footer button {
+    gap: 5px;
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .review-details-overlay,
+  .review-details-modal {
+    animation: none;
+  }
+
+  .review-details-modal *,
+  .review-details-modal *::before,
+  .review-details-modal *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

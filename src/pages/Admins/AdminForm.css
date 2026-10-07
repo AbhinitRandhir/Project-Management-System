@@ -1,0 +1,877 @@
+
+/* =========================================================
+   ADMIN FORM
+   Complete responsive form styling
+   ========================================================= */
+
+.admin-form {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background: transparent;
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   SUBMIT / API ERROR
+   ========================================================= */
+
+.admin-form-submit-error {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(220, 53, 69, 0.28);
+  border-radius: 10px;
+  background: rgba(220, 53, 69, 0.07);
+  color: #b42318;
+  font-size: 13px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.admin-form-submit-error svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.admin-form-section {
+  width: 100%;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-sizing: border-box;
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    background var(--transition-normal);
+}
+
+.admin-form-section:hover {
+  border-color: rgba(15, 111, 120, 0.24);
+}
+
+.admin-form-section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.admin-form-section-icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(15, 111, 120, 0.16);
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  box-sizing: border-box;
+}
+
+.admin-form-section-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
+}
+
+.admin-form-section-header h3 {
+  margin: 0 0 4px;
+  color: var(--text-primary);
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.admin-form-section-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.admin-form-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 34px;
+  row-gap: 25px;
+}
+
+/* =========================================================
+   FIELD GROUP
+   ========================================================= */
+
+.admin-form-input-group {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.admin-form-input-group > label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 19px;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.admin-form-input-group > label span {
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   INPUT WRAPPER
+   IMPORTANT: visible border is here
+   ========================================================= */
+
+.admin-form-input-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: var(--bg-input, #ffffff);
+  box-sizing: border-box;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.admin-form-input-wrapper:hover {
+  border-color: #94a3b8;
+}
+
+.admin-form-input-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.admin-form-input-wrapper > svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-left: 15px;
+  color: #8ea3bf;
+  stroke-width: 1.8;
+  pointer-events: none;
+}
+
+.admin-form-input-wrapper input,
+.admin-form-input-wrapper select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  margin: 0;
+  padding: 0 14px 0 12px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+.admin-form-input-wrapper input::placeholder {
+  color: #91a4bd;
+  opacity: 1;
+}
+
+.admin-form-input-wrapper input:disabled,
+.admin-form-input-wrapper select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.admin-form-input-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: 42px;
+}
+
+.admin-form-input-wrapper select option {
+  color: #1f2937;
+  background: #ffffff;
+}
+
+/* Custom dropdown arrow */
+.admin-form-input-wrapper select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, #64748b 50%),
+    linear-gradient(135deg, #64748b 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 20px,
+    calc(100% - 13px) 20px;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   FIELD ERROR
+   ========================================================= */
+
+.admin-form-field-error .admin-form-input-wrapper {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.018);
+}
+
+.admin-form-field-error .admin-form-input-wrapper:hover {
+  border-color: #dc2626;
+}
+
+.admin-form-field-error .admin-form-input-wrapper:focus-within {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.10);
+}
+
+.admin-form-field-error .admin-form-input-wrapper > svg {
+  color: #dc2626;
+}
+
+.admin-form-input-group > small {
+  display: block;
+  margin: -2px 0 0;
+  color: #dc2626;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+/* =========================================================
+   PASSWORD FIELD
+   ========================================================= */
+
+.admin-form-password-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-form-password-field .admin-form-input-group {
+  width: 100%;
+}
+
+.admin-form-password-field .admin-form-input-wrapper input {
+  padding-right: 50px;
+}
+
+.admin-form-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  width: 36px;
+  height: 36px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #7f95b1;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.admin-form-password-toggle:hover:not(:disabled) {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.admin-form-password-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.admin-form-password-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.admin-form-password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* =========================================================
+   PASSWORD REQUIREMENTS
+   ========================================================= */
+
+.admin-form-password-hint {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid var(--border-light, #edf2f0);
+  border-radius: 10px;
+  background: var(--bg-soft, #f8faf9);
+  box-sizing: border-box;
+}
+
+.admin-form-password-hint-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.admin-form-password-hint-title svg {
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+}
+
+.admin-form-password-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+}
+
+.admin-form-password-check {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.password-check-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-check-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.password-check-valid {
+  color: #15803d;
+}
+
+.password-check-valid .password-check-icon {
+  color: #16a34a;
+}
+
+.password-check-invalid {
+  color: var(--text-secondary);
+}
+
+.password-check-invalid .password-check-icon {
+  color: #94a3b8;
+}
+
+.password-check-text {
+  min-width: 0;
+}
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.admin-form-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 2px 0 4px;
+  box-sizing: border-box;
+}
+
+.admin-form-cancel-btn,
+.admin-form-submit-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-form-cancel-btn {
+  border: 1px solid #cbd5e1;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.admin-form-cancel-btn:hover:not(:disabled) {
+  border-color: #94a3b8;
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.admin-form-submit-btn {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(15, 111, 120, 0.16);
+}
+
+.admin-form-submit-btn:hover:not(:disabled) {
+  border-color: var(--primary-hover);
+  background: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(15, 111, 120, 0.20);
+}
+
+.admin-form-submit-btn:focus-visible,
+.admin-form-cancel-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.admin-form-cancel-btn:disabled,
+.admin-form-submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+.admin-form-cancel-btn svg,
+.admin-form-submit-btn svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+/* =========================================================
+   SUBMIT SPINNER
+   ========================================================= */
+
+.admin-form-spinner {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  border: 2px solid rgba(255, 255, 255, 0.38);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: adminFormSpin 0.7s linear infinite;
+}
+
+@keyframes adminFormSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .admin-form-section {
+  border-color: #263b37;
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .admin-form-section:hover {
+  border-color: rgba(34, 166, 160, 0.34);
+}
+
+[data-theme="dark"] .admin-form-input-wrapper {
+  border-color: #344944;
+  background: var(--bg-input, #111c1a);
+}
+
+[data-theme="dark"] .admin-form-input-wrapper:hover {
+  border-color: #4b625d;
+}
+
+[data-theme="dark"] .admin-form-input-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+[data-theme="dark"] .admin-form-input-wrapper input,
+[data-theme="dark"] .admin-form-input-wrapper select {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-form-input-wrapper input::placeholder {
+  color: #718b86;
+}
+
+[data-theme="dark"] .admin-form-input-wrapper select option {
+  color: #e5efed;
+  background: #111c1a;
+}
+
+[data-theme="dark"] .admin-form-input-wrapper select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, #8ca7a2 50%),
+    linear-gradient(135deg, #8ca7a2 50%, transparent 50%);
+}
+
+[data-theme="dark"] .admin-form-password-hint {
+  border-color: #263b37;
+  background: #111c1a;
+}
+
+[data-theme="dark"] .admin-form-cancel-btn {
+  border-color: #344944;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .admin-form-cancel-btn:hover:not(:disabled) {
+  border-color: #4b625d;
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-form-submit-error {
+  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.08);
+  color: #fca5a5;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .admin-form {
+    gap: 20px;
+  }
+
+  .admin-form-section {
+    padding: 22px;
+  }
+
+  .admin-form-grid {
+    column-gap: 26px;
+    row-gap: 23px;
+  }
+
+  .admin-form-section-header {
+    margin-bottom: 22px;
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .admin-form-section {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .admin-form-grid {
+    column-gap: 20px;
+    row-gap: 22px;
+  }
+
+  .admin-form-section-header {
+    gap: 12px;
+  }
+
+  .admin-form-section-icon {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+  }
+
+  .admin-form-section-header h3 {
+    font-size: 16px;
+  }
+
+  .admin-form-section-header p {
+    font-size: 11px;
+  }
+
+  .admin-form-input-wrapper {
+    min-height: 47px;
+  }
+
+  .admin-form-input-wrapper input,
+  .admin-form-input-wrapper select {
+    height: 45px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 780px) {
+  .admin-form {
+    gap: 16px;
+  }
+
+  .admin-form-section {
+    padding: 18px;
+    border-radius: 13px;
+  }
+
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+    row-gap: 19px;
+  }
+
+  .admin-form-section-header {
+    margin-bottom: 19px;
+  }
+
+  .admin-form-section-icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    border-radius: 10px;
+  }
+
+  .admin-form-section-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .admin-form-input-group > label {
+    font-size: 13px;
+  }
+
+  .admin-form-input-wrapper {
+    min-height: 48px;
+    border-radius: 8px;
+  }
+
+  .admin-form-input-wrapper input,
+  .admin-form-input-wrapper select {
+    height: 46px;
+    font-size: 13px;
+  }
+
+  .admin-form-password-checks {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .admin-form-actions {
+    padding-top: 0;
+  }
+
+  .admin-form-cancel-btn,
+  .admin-form-submit-btn {
+    min-height: 44px;
+    padding: 0 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .admin-form-section {
+    padding: 15px;
+    border-radius: 11px;
+  }
+
+  .admin-form-section-header {
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+
+  .admin-form-section-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    border-radius: 9px;
+  }
+
+  .admin-form-section-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .admin-form-section-header h3 {
+    font-size: 15px;
+  }
+
+  .admin-form-section-header p {
+    font-size: 10px;
+  }
+
+  .admin-form-grid {
+    row-gap: 17px;
+  }
+
+  .admin-form-input-wrapper > svg {
+    width: 17px;
+    height: 17px;
+    flex-basis: 17px;
+    margin-left: 12px;
+  }
+
+  .admin-form-input-wrapper input,
+  .admin-form-input-wrapper select {
+    height: 44px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+  }
+
+  .admin-form-input-wrapper select {
+    padding-right: 38px;
+    background-position:
+      calc(100% - 16px) 19px,
+      calc(100% - 11px) 19px;
+  }
+
+  .admin-form-password-field .admin-form-input-wrapper input {
+    padding-right: 45px;
+  }
+
+  .admin-form-password-toggle {
+    width: 33px;
+    height: 33px;
+    right: 5px;
+  }
+
+  .admin-form-password-hint {
+    padding: 13px;
+  }
+
+  .admin-form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .admin-form-cancel-btn,
+  .admin-form-submit-btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .admin-form-submit-error {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .admin-form-section {
+    padding: 13px;
+  }
+
+  .admin-form-section-header {
+    gap: 9px;
+  }
+
+  .admin-form-section-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .admin-form-section-header h3 {
+    font-size: 14px;
+  }
+
+  .admin-form-section-header p {
+    font-size: 9.5px;
+  }
+
+  .admin-form-input-group > label {
+    font-size: 12px;
+  }
+
+  .admin-form-input-wrapper input,
+  .admin-form-input-wrapper select {
+    font-size: 12px;
+  }
+
+  .admin-form-password-check {
+    font-size: 10.5px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-form,
+  .admin-form-section,
+  .admin-form-input-wrapper,
+  .admin-form-password-toggle,
+  .admin-form-cancel-btn,
+  .admin-form-submit-btn {
+    transition: none;
+  }
+
+  .admin-form-spinner {
+    animation-duration: 1.5s;
+  }
+}

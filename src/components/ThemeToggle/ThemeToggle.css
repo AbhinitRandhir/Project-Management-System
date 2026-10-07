@@ -1,0 +1,188 @@
+/* =========================================================
+   PROJECTTRACK
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-card);
+  color: var(--text-secondary);
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.theme-toggle:hover {
+  color: var(--primary);
+
+  background: var(--primary-light);
+
+  border-color: var(--primary);
+
+  box-shadow: var(--shadow-sm);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+
+  stroke-width: 2;
+
+  transition:
+    transform var(--transition-fast);
+}
+
+
+.theme-toggle:hover svg {
+  transform: rotate(10deg);
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+[data-theme="dark"] .theme-toggle {
+  background: var(--bg-card);
+
+  border-color: var(--border-color);
+
+  color: var(--text-secondary);
+}
+
+
+[data-theme="dark"] .theme-toggle:hover {
+  color: var(--primary);
+
+  background: var(--primary-light);
+
+  border-color: var(--primary);
+}
+
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .theme-toggle svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 16px;
+  }
+
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+/* =========================================================
+   380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .theme-toggle svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle svg {
+    transition: none;
+  }
+
+  .theme-toggle:hover {
+    transform: none;
+  }
+
+  .theme-toggle:hover svg {
+    transform: none;
+  }
+}

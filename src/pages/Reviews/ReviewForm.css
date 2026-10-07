@@ -1,0 +1,1451 @@
+/* =========================================================
+   REVIEW FORM - PROJECTTRACK
+   Complete CSS for ReviewForm.jsx
+========================================================= */
+
+:root {
+  --review-primary: #205a9e;
+  --review-primary-dark: #174a82;
+  --review-primary-light: #eaf2fb;
+
+  --review-bg: #f5f8fc;
+  --review-surface: #ffffff;
+  --review-border: #e2e8f0;
+
+  --review-text: #172b4d;
+  --review-muted: #64748b;
+
+  --review-success: #15803d;
+  --review-success-bg: #f0fdf4;
+
+  --review-danger: #dc2626;
+  --review-danger-bg: #fef2f2;
+
+  --review-warning: #d97706;
+  --review-warning-bg: #fffbeb;
+
+  --review-radius: 12px;
+  --review-radius-sm: 8px;
+
+  --review-shadow:
+    0 18px 60px rgba(15, 35, 65, 0.18);
+}
+
+/* =========================================================
+   OVERLAY AND MODAL
+========================================================= */
+
+.review-form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  overflow-y: auto;
+  animation: reviewFadeIn 0.2s ease;
+}
+
+.review-form-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 48px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--review-surface);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+
+  box-shadow: var(--review-shadow);
+  overflow: hidden;
+
+  animation: reviewModalIn 0.25s ease;
+}
+
+@keyframes reviewFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reviewModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.review-form-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 20px 26px;
+
+  background: #ffffff;
+  border-bottom: 1px solid var(--review-border);
+}
+
+.review-form-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.review-form-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--review-primary);
+  background: var(--review-primary-light);
+  border-radius: 13px;
+
+  font-size: 23px;
+}
+
+.review-form-title h2 {
+  margin: 0;
+
+  color: var(--review-text);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.review-form-title p {
+  margin: 4px 0 0;
+
+  color: var(--review-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.review-form-close {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  font-size: 19px;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.review-form-close:hover:not(:disabled) {
+  color: var(--review-danger);
+  background: var(--review-danger-bg);
+  transform: rotate(90deg);
+}
+
+.review-form-close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   FORM BODY
+========================================================= */
+
+.review-form {
+  flex: 1;
+  min-height: 0;
+
+  padding: 24px 26px 28px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  background: var(--review-bg);
+}
+
+.review-form::-webkit-scrollbar {
+  width: 7px;
+}
+
+.review-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.review-form::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+.review-form::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =========================================================
+   FORM SECTIONS
+========================================================= */
+
+.review-form-section {
+  margin-bottom: 22px;
+  padding: 22px;
+
+  background: var(--review-surface);
+  border: 1px solid var(--review-border);
+  border-radius: var(--review-radius);
+
+  box-shadow: 0 2px 8px rgba(15, 35, 65, 0.025);
+}
+
+.review-form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.review-form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid #edf1f6;
+}
+
+.review-form-section-title > svg {
+  flex-shrink: 0;
+
+  color: var(--review-primary);
+  font-size: 19px;
+}
+
+.review-form-section-title h3 {
+  margin: 0;
+
+  color: var(--review-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.review-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 22px;
+}
+
+.review-form-full {
+  grid-column: 1 / -1;
+}
+
+/* =========================================================
+   FORM GROUPS
+========================================================= */
+
+.review-form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.review-form-group > label,
+.review-student-marks > label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.review-form-group label span,
+.review-student-marks label span {
+  color: var(--review-danger);
+  font-weight: 700;
+}
+
+.review-form-group input,
+.review-form-group select,
+.review-form-group textarea,
+.review-student-marks input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 11px 13px;
+
+  color: var(--review-text);
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+  border-radius: var(--review-radius-sm);
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.review-form-group input,
+.review-form-group select,
+.review-student-marks input {
+  min-height: 43px;
+}
+
+.review-form-group textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.review-form-group input::placeholder,
+.review-form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.review-form-group input:hover:not(:disabled),
+.review-form-group select:hover:not(:disabled),
+.review-form-group textarea:hover:not(:disabled),
+.review-student-marks input:hover:not(:disabled) {
+  border-color: #94a3b8;
+}
+
+.review-form-group input:focus,
+.review-form-group select:focus,
+.review-form-group textarea:focus,
+.review-student-marks input:focus {
+  border-color: var(--review-primary);
+  box-shadow: 0 0 0 3px rgba(32, 90, 158, 0.12);
+}
+
+.review-form-group input:disabled,
+.review-form-group select:disabled,
+.review-form-group textarea:disabled,
+.review-student-marks input:disabled {
+  color: #94a3b8;
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+/* Date input */
+
+.review-form-group input[type="date"] {
+  cursor: pointer;
+}
+
+/* Number input */
+
+.review-form-group input[type="number"],
+.review-student-marks input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.review-form-group input[type="number"]::-webkit-inner-spin-button,
+.review-form-group input[type="number"]::-webkit-outer-spin-button,
+.review-student-marks input[type="number"]::-webkit-inner-spin-button,
+.review-student-marks input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* Invalid field */
+
+.review-form-group input.has-error,
+.review-form-group select.has-error,
+.review-form-group textarea.has-error,
+.review-project-select.has-error,
+.review-marks-input input.has-error,
+.review-student-marks input.has-error {
+  border-color: var(--review-danger);
+  background: #fffafa;
+}
+
+.review-form-group input.has-error:focus,
+.review-form-group select.has-error:focus,
+.review-form-group textarea.has-error:focus,
+.review-marks-input input.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* =========================================================
+   VALIDATION MESSAGES
+========================================================= */
+
+.review-form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+
+  margin-top: 7px;
+
+  color: var(--review-danger);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.review-form-error svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.review-form-hint {
+  display: block;
+  margin-top: 7px;
+
+  color: var(--review-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   PROJECT DROPDOWN
+========================================================= */
+
+.review-project-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.review-project-select {
+  width: 100%;
+  min-height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 11px 13px;
+
+  color: var(--review-text);
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+  border-radius: var(--review-radius-sm);
+
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.review-project-select:hover:not(:disabled) {
+  border-color: var(--review-primary);
+}
+
+.review-project-select:focus-visible {
+  outline: none;
+  border-color: var(--review-primary);
+  box-shadow: 0 0 0 3px rgba(32, 90, 158, 0.12);
+}
+
+.review-project-select > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-project-select > svg {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.review-project-select[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+
+.review-project-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.review-project-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+
+  max-height: 250px;
+  padding: 5px;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+  border: 1px solid var(--review-border);
+  border-radius: 10px;
+
+  box-shadow: 0 12px 30px rgba(15, 35, 65, 0.14);
+
+  animation: reviewDropdownIn 0.16s ease;
+}
+
+@keyframes reviewDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-project-dropdown button {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  padding: 11px 12px;
+
+  color: var(--review-text);
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.review-project-dropdown button:hover,
+.review-project-dropdown button.selected {
+  background: var(--review-primary-light);
+}
+
+.review-project-dropdown button.selected {
+  color: var(--review-primary);
+  font-weight: 600;
+}
+
+.review-project-dropdown button span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.review-project-dropdown button small {
+  color: var(--review-muted);
+  font-size: 11px;
+}
+
+.review-project-empty {
+  padding: 18px 12px;
+
+  color: var(--review-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* =========================================================
+   PROJECT PREVIEW
+========================================================= */
+
+.review-project-preview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  margin-top: 17px;
+  padding: 15px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 9px;
+}
+
+.review-project-preview > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.review-project-preview span {
+  color: var(--review-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.review-project-preview strong {
+  color: var(--review-text);
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   TEAM INFORMATION CARDS
+========================================================= */
+
+.review-team-preview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.review-team-preview-item {
+  min-width: 0;
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 10px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.review-team-preview-item:hover {
+  background: #f3f7fc;
+  border-color: #cbdcf0;
+}
+
+.review-team-preview-item > svg {
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+  padding: 9px;
+
+  color: var(--review-primary);
+  background: var(--review-primary-light);
+  border-radius: 9px;
+
+  font-size: 18px;
+}
+
+.review-team-preview-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.review-team-preview-item span {
+  color: var(--review-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.review-team-preview-item strong {
+  color: var(--review-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.review-rating-input {
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.review-rating-input button {
+  width: 31px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  color: #cbd5e1;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+
+  font-size: 21px;
+  cursor: pointer;
+
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.review-rating-input button:hover:not(:disabled) {
+  color: #f59e0b;
+  transform: scale(1.12);
+}
+
+.review-rating-input button.active {
+  color: #f59e0b;
+}
+
+.review-rating-input button.active svg {
+  fill: #f59e0b;
+}
+
+.review-rating-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.review-rating-input strong {
+  margin-left: 8px;
+
+  color: var(--review-text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   PROGRESS READONLY
+========================================================= */
+
+.review-progress-readonly {
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 13px;
+
+  color: var(--review-primary);
+  background: var(--review-primary-light);
+  border: 1px solid #d4e5f8;
+  border-radius: var(--review-radius-sm);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.review-progress-readonly span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   MARKS INPUT
+========================================================= */
+
+.review-marks-input {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.review-marks-input input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.review-marks-input > span {
+  min-width: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 10px;
+
+  color: var(--review-primary);
+  background: var(--review-primary-light);
+  border: 1px solid #cbd5e1;
+  border-left: none;
+  border-radius: 0 var(--review-radius-sm) var(--review-radius-sm) 0;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   CHARACTER COUNTER
+========================================================= */
+
+.review-form-character-count {
+  margin-top: 6px;
+
+  color: #94a3b8;
+  font-size: 11px;
+  text-align: right;
+}
+
+/* =========================================================
+   STUDENT EVALUATION
+========================================================= */
+
+.review-student-evaluation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-student-evaluation-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  align-items: center;
+  gap: 18px;
+
+  padding: 15px;
+
+  background: #f8fafc;
+  border: 1px solid #e8eef5;
+  border-radius: 10px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.review-student-evaluation-row:hover {
+  background: #f5f9fe;
+  border-color: #cbdcf0;
+}
+
+.review-student-identity {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-student-index {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--review-primary);
+  background: var(--review-primary-light);
+  border-radius: 50%;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-student-identity > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-student-identity strong {
+  color: var(--review-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.review-student-identity small {
+  color: var(--review-muted);
+  font-size: 11px;
+}
+
+.review-student-marks {
+  min-width: 0;
+}
+
+.review-student-marks > label {
+  margin-bottom: 6px;
+}
+
+.review-student-marks .review-marks-input {
+  width: 100%;
+}
+
+/* Empty state */
+
+.review-form-empty {
+  padding: 24px 18px;
+
+  color: var(--review-muted);
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.review-form-actions {
+  position: sticky;
+  bottom: -28px;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  margin: 24px -26px -28px;
+  padding: 17px 26px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid var(--review-border);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.review-form-actions button,
+.review-confirm-actions button {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.review-form-actions button svg,
+.review-confirm-actions button svg {
+  font-size: 16px;
+}
+
+.review-form-cancel,
+.review-confirm-cancel {
+  color: #475569;
+  background: #ffffff;
+  border-color: #cbd5e1 !important;
+}
+
+.review-form-cancel:hover:not(:disabled),
+.review-confirm-cancel:hover:not(:disabled) {
+  color: var(--review-danger);
+  background: var(--review-danger-bg);
+  border-color: #fecaca !important;
+}
+
+.review-form-submit,
+.review-confirm-submit {
+  color: #ffffff;
+  background: var(--review-primary);
+  border-color: var(--review-primary) !important;
+
+  box-shadow: 0 3px 8px rgba(32, 90, 158, 0.15);
+}
+
+.review-form-submit:hover:not(:disabled),
+.review-confirm-submit:hover:not(:disabled) {
+  background: var(--review-primary-dark);
+  border-color: var(--review-primary-dark) !important;
+  box-shadow: 0 5px 12px rgba(32, 90, 158, 0.2);
+  transform: translateY(-1px);
+}
+
+.review-form-actions button:active:not(:disabled),
+.review-confirm-actions button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.review-form-actions button:disabled,
+.review-confirm-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* =========================================================
+   CONFIRMATION MODAL
+========================================================= */
+
+.review-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  animation: reviewFadeIn 0.18s ease;
+}
+
+.review-confirm-modal {
+  width: 100%;
+  max-width: 440px;
+
+  padding: 28px;
+
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+
+  animation: reviewModalIn 0.2s ease;
+}
+
+.review-confirm-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 17px;
+
+  color: var(--review-warning);
+  background: var(--review-warning-bg);
+  border-radius: 50%;
+
+  font-size: 23px;
+}
+
+.review-confirm-content h2 {
+  margin: 0 0 10px;
+
+  color: var(--review-text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.review-confirm-content p {
+  margin: 0 0 12px;
+
+  color: var(--review-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.review-confirm-content p strong {
+  color: var(--review-text);
+  font-weight: 700;
+}
+
+.review-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 24px;
+  padding-top: 18px;
+
+  border-top: 1px solid var(--review-border);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.review-form button:focus-visible,
+.review-confirm-modal button:focus-visible {
+  outline: 3px solid rgba(32, 90, 158, 0.35);
+  outline-offset: 2px;
+}
+
+.review-form [aria-invalid="true"]:focus-visible {
+  outline-color: rgba(220, 38, 38, 0.35);
+}
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .review-form-overlay {
+    padding: 16px;
+  }
+
+  .review-form-modal {
+    max-width: 760px;
+    max-height: calc(100vh - 32px);
+  }
+
+  .review-form {
+    padding: 20px;
+  }
+
+  .review-form-actions {
+    bottom: -20px;
+    margin: 22px -20px -20px;
+    padding: 15px 20px;
+  }
+
+  .review-form-section {
+    padding: 19px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 680px
+========================================================= */
+
+@media (max-width: 680px) {
+  .review-form-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .review-form-modal {
+    max-height: calc(100vh - 20px);
+    border-radius: 14px;
+  }
+
+  .review-form-header {
+    padding: 16px 17px;
+  }
+
+  .review-form-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .review-form-title h2 {
+    font-size: 18px;
+  }
+
+  .review-form-title p {
+    font-size: 12px;
+  }
+
+  .review-form {
+    padding: 16px;
+  }
+
+  .review-form-section {
+    margin-bottom: 15px;
+    padding: 16px;
+  }
+
+  .review-form-section-title {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .review-form-section-title h3 {
+    font-size: 15px;
+  }
+
+  .review-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .review-form-full {
+    grid-column: auto;
+  }
+
+  .review-team-preview {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .review-team-preview-item {
+    min-height: 64px;
+    padding: 11px;
+  }
+
+  .review-project-preview {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .review-student-evaluation-row {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding: 13px;
+  }
+
+  .review-student-marks {
+    width: 100%;
+  }
+
+  .review-form-actions {
+    bottom: -16px;
+    margin: 18px -16px -16px;
+    padding: 13px 16px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .review-form-overlay {
+    padding: 0;
+  }
+
+  .review-form-modal {
+    width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
+
+    border: none;
+    border-radius: 0;
+  }
+
+  .review-form-header {
+    padding: 14px;
+  }
+
+  .review-form-title {
+    gap: 10px;
+  }
+
+  .review-form-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+
+  .review-form-title h2 {
+    font-size: 17px;
+  }
+
+  .review-form-title p {
+    font-size: 11px;
+  }
+
+  .review-form-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .review-form {
+    padding: 12px;
+  }
+
+  .review-form-section {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .review-form-section-title h3 {
+    font-size: 14px;
+  }
+
+  .review-form-group > label,
+  .review-student-marks > label {
+    font-size: 12px;
+  }
+
+  .review-form-group input,
+  .review-form-group select,
+  .review-form-group textarea,
+  .review-student-marks input {
+    font-size: 13px;
+  }
+
+  .review-form-actions {
+    bottom: -12px;
+    gap: 8px;
+
+    margin: 16px -12px -12px;
+    padding: 12px;
+  }
+
+  .review-form-actions button {
+    flex: 1;
+    min-height: 40px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .review-form-actions button svg {
+    font-size: 14px;
+  }
+
+  .review-confirm-modal {
+    padding: 22px;
+    border-radius: 13px;
+  }
+
+  .review-confirm-content h2 {
+    font-size: 18px;
+  }
+
+  .review-confirm-actions {
+    flex-direction: column-reverse;
+  }
+
+  .review-confirm-actions button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+  .review-form-header {
+    padding: 12px;
+  }
+
+  .review-form {
+    padding: 10px;
+  }
+
+  .review-form-section {
+    padding: 12px;
+  }
+
+  .review-form-title h2 {
+    font-size: 16px;
+  }
+
+  .review-form-title p {
+    max-width: 190px;
+  }
+
+  .review-project-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .review-rating-input {
+    gap: 2px;
+  }
+
+  .review-rating-input button {
+    width: 27px;
+    font-size: 18px;
+  }
+
+  .review-progress-readonly {
+    flex-wrap: wrap;
+  }
+
+  .review-form-actions button {
+    gap: 5px;
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .review-form-overlay,
+  .review-form-modal,
+  .review-project-dropdown,
+  .review-confirm-overlay,
+  .review-confirm-modal {
+    animation: none;
+  }
+
+  .review-form *,
+  .review-confirm-modal * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

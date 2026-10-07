@@ -1,0 +1,280 @@
+
+/* =========================================================
+   FOOTER — BASE
+========================================================= */
+
+.app-footer {
+  width: 100%;
+  flex-shrink: 0;
+
+  background: var(--bg-card);
+  color: var(--text-secondary);
+
+  border-top: 1px solid var(--border-color);
+
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+/* =========================================================
+   FOOTER CONTENT
+========================================================= */
+
+.app-footer-content {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 58px;
+
+  margin: 0 auto;
+  padding: 14px 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   FOOTER LEFT
+========================================================= */
+
+.app-footer-left {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   FOOTER BRAND
+========================================================= */
+
+.app-footer-brand {
+  color: var(--text-secondary);
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: color var(--transition-fast);
+}
+
+.app-footer-brand:hover {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   FOOTER DESCRIPTION
+========================================================= */
+
+.app-footer-description {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   SEPARATOR
+========================================================= */
+
+.app-footer-separator {
+  color: var(--border-color);
+  user-select: none;
+}
+
+
+/* =========================================================
+   FOOTER RIGHT
+========================================================= */
+
+.app-footer-right {
+  flex-shrink: 0;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  color: var(--text-muted);
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+[data-theme="dark"] .app-footer {
+  background: var(--bg-card);
+  border-top-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .app-footer-brand {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .app-footer-brand:hover {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .app-footer-description {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .app-footer-separator {
+  color: var(--border-color);
+}
+
+[data-theme="dark"] .app-footer-right {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.app-footer-brand:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+  .app-footer-content {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .app-footer-content {
+    padding-right: 32px;
+    padding-left: 32px;
+
+    gap: 18px;
+  }
+
+  .app-footer-left,
+  .app-footer-right {
+    font-size: 11.5px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / MOBILE — 780px
+========================================================= */
+
+@media (max-width: 780px) {
+  .app-footer-content {
+    min-height: 54px;
+
+    padding: 13px 24px;
+
+    gap: 12px;
+  }
+
+  .app-footer-left,
+  .app-footer-right {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — 480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .app-footer-content {
+    min-height: auto;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 14px 18px;
+
+    text-align: center;
+  }
+
+  .app-footer-left {
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .app-footer-right {
+    font-size: 10.5px;
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE — 380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .app-footer-content {
+    padding-right: 15px;
+    padding-left: 15px;
+
+    gap: 5px;
+  }
+
+  .app-footer-left {
+    gap: 5px;
+    font-size: 10px;
+  }
+
+  .app-footer-right {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-footer,
+  .app-footer-brand {
+    transition: none;
+  }
+}
